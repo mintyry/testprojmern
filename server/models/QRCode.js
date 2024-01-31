@@ -1,8 +1,8 @@
 const { model, Schema, Types } = require('mongoose');
 
-const scanEventSchema = new mongoose.Schema(
+const scanEventSchema = new Schema(
     {
-        userId: {
+        user: {
             type: Types.ObjectId,
             ref: 'User'
         },

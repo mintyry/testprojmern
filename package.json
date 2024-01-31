@@ -1,0 +1,16 @@
+{
+  "name": "scannerNow",
+  "version": "1.0.0",
+  "description": "users: admin/teacher user/student",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
