@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from "../utils/mutations";
+import Auth from '../utils/auth';
 
 
 function SignUp() {
@@ -14,7 +15,7 @@ function SignUp() {
     const [createUser] = useMutation(CREATE_USER);
 
     const handleChange = (event) => {
-        const  { name, value } = event.target;
+        const { name, value } = event.target;
 
         setFormState({
             ...formState,
@@ -25,13 +26,15 @@ function SignUp() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { data } = await createUser({
-            ...formState
+            variables: {
+                ...formState
+            }
         });
 
         // save token to localStorage
 
 
-        console.log(data.token)
+        Auth.login(data.createUser.token)
     }
 
 
@@ -40,20 +43,20 @@ function SignUp() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
-                        Name: <br/>
-                        <input type = "text" name = "name" value = {formState.name} onChange={handleChange} />
+                        Name: <br />
+                        <input type="text" name="name" value={formState.name} onChange={handleChange} />
                     </label>
                 </div>
                 <div>
                     <label>
-                        Username: <br/>
-                        <input type = "text" name = "username" value = {formState.username} onChange={handleChange} />
+                        Username: <br />
+                        <input type="text" name="username" value={formState.username} onChange={handleChange} />
                     </label>
                 </div>
                 <div>
                     <label>
-                        password: <br/>
-                        <input type = "text" name = "password" value = {formState.password} onChange={handleChange} />
+                        password: <br />
+                        <input type="text" name="password" value={formState.password} onChange={handleChange} />
                     </label>
                 </div>
 

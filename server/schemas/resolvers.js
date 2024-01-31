@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, QRCode } = require('../models');
 const { signToken } = require('../utils/auth');
 
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
                 // when using create without args, it didnt work.
                 // had to use this alternate syntax; same result
                 const qrCode = new QRCode();
-                await qrCode.save();
+                return await qrCode.save();
             } catch (error) {
                 console.error(error);
                 throw new Error(error);
