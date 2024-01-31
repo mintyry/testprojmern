@@ -17,12 +17,12 @@ const User = model('User', userSchema);
 module.exports = User;
 
 // how does this get created? changes at random intervals; front end needs to be aware of it
-const QR = { 
-    timestamp,
-    scanned_users: [
-        {
-            user_id,
-            scan_time
-        }
-    ]
-}
+// const QR = { 
+//     timestamp,
+//     scanned_users: [
+//         {
+//             user_id,
+//             scan_time
+//         }
+//     ]
+// }
